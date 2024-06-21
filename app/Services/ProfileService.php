@@ -21,7 +21,7 @@ class ProfileService
             switch ($type) {               
                 case 'user':
                     $name = $entiry->name;
-                    $folder_path = $entiry->repute_id . "/profile";
+                    $folder_path = $entiry->flow_id . "/profile";
                     $file_name = "/profile.png";
                     break;
             }
@@ -59,7 +59,7 @@ class ProfileService
 
             Storage::disk('local')->put($folder_path . $file_name, $contents);
 
-            // Storage::disk('local')->deleteDirectory($entiry->repute_id);
+            // Storage::disk('local')->deleteDirectory($entiry->flow_id);
 
             return $folder_path . $file_name;
         } catch (Exception $e) {

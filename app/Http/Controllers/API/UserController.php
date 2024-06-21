@@ -42,14 +42,14 @@ class UserController extends Controller
 
             $validation = Validator::make($request->all(), [
                 'id' => ['nullable', 'numeric', 'exists:users'],
-                'repute_id' => ['nullable', 'numeric', 'exists:users']
+                'flow_id' => ['nullable', 'numeric', 'exists:users']
             ]);
 
             if ($validation->fails()) {
                 return $this->sendJsonResponse(false, 'Invalid data', ['errors' => $validation->errors()->getMessages()], 200);
             }
 
-            if ($request->input('id') == "" && $request->input('repute_id') == "") {
+            if ($request->input('id') == "" && $request->input('flow_id') == "") {
                 return $this->sendJsonResponse(false, "Please enter the details", null, 200);
             }
 
@@ -57,8 +57,8 @@ class UserController extends Controller
                 $user = User::where('id', $request->input('id'))->first();
             }
 
-            if ($request->input('repute_id')) {
-                $user = User::where('repute_id', $request->input('repute_id'))->first();
+            if ($request->input('flow_id')) {
+                $user = User::where('flow_id', $request->input('flow_id'))->first();
             }
 
            
@@ -66,13 +66,11 @@ class UserController extends Controller
           
             return $this->sendJsonResponse(true, "User Profile Successfully Fetched", [
                 'id' => $user->id,
-                'user_name' => $user->name,
-                'user_email' => $user->email,
-                'user_mobile' => $user->mobile,
-                'aadhaar_no' => $user->aadhaar_no ? formatAadharNumber($user->aadhaar_no) : null,
+                'user_name' => $user->name,                
+                'user_mobile' => $user->mobile,               
                 'profile_photo' => $user->photo_url,
-                'repute_id' => $user->repute_id,
-                'formated_user_repute_id' => $user->formated_repute_id,
+                'flow_id' => $user->flow_id,
+                'formated_user_flow_id' => $user->formated_flow_id,
                 'is_verified' => $user->is_verified,
                 
             ], 200);

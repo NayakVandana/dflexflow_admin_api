@@ -6,37 +6,37 @@ use App\Models\User;
 trait ReputeIdTraits
 {
 
-    public function assignIndividualReputeId()
+    public function assignIndividualFlowId()
     {
-        $this->repute_id = $this->generateReputeId();
+        $this->flow_id = $this->generateFlowId();
         $this->save();
     }
 
-    public function assignCompanyReputeId()
+    public function assignCompanyFlowId()
     {
-        $this->repute_id = $this->generateReputeId();
+        $this->flow_id = $this->generateFlowId();
         $this->save();
     }
 
-    private function generateReputeId()
+    private function generateFlowId()
     {
-        $is_exist_repute_id = false;
+        $is_exist_flow_id = false;
         do {
             
-            $reputeid = rand((int) 1111111111, (int) 9999999999);
+            $flowid = rand((int) 1111111111, (int) 9999999999);
            
-            return $reputeid;
-        } while (!$is_exist_repute_id);
+            return $flowid;
+        } while (!$is_exist_flow_id);
     }
 
 
-    private function checkReputeIDDuplication($repute_id)
+    private function checkFlowIDDuplication($flow_id)
     {
         try {
             $is_exist = false;
-            if ($repute_id) {
+            if ($flow_id) {
                 //It will check if any individuals having this repute id
-                $individual_count = User::where("repute_id", $repute_id)->count();
+                $individual_count = User::where("flow_id", $flow_id)->count();
                 if ($individual_count > 0) {
                     $is_exist = true;
                 }

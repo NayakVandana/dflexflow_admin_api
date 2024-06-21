@@ -22,7 +22,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         'id',
-        'repute_id',
+        'flow_id',
         'photo',
         'name',
         'email',
@@ -39,7 +39,7 @@ class User extends Authenticatable
         'deleted_at'
     ];
 
-    protected $appends = ['formated_repute_id', 'photo_url', 'is_verified'];
+    protected $appends = ['formated_flow_id', 'photo_url', 'is_verified'];
 
     /**
      * The attributes that are mass assignable.
@@ -76,10 +76,10 @@ class User extends Authenticatable
         return $this->hasOne(UserToken::class);
     }
 
-    protected function formatedReputeId(): Attribute
+    protected function formatedFlowId(): Attribute
     {
         return Attribute::make(
-            get: fn () => "RI-" . substr($this->repute_id, 0, 4) . "-" . substr($this->repute_id, 4, 4) . "-" . substr($this->repute_id, 8, 2)
+            get: fn () => "FI-" . substr($this->flow_id, 0, 4) . "-" . substr($this->flow_id, 4, 4) . "-" . substr($this->flow_id, 8, 2)
         );
     }
  

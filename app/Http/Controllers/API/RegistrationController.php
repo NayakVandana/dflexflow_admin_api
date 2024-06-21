@@ -56,7 +56,7 @@ class RegistrationController extends Controller
             $user = new User();
             $user->mobile = $request->input('mobile');
             $user->name = $request->input('name');           
-            $user->assignIndividualReputeId();
+            $user->assignIndividualFlowId();
                         $user->save();
 
           

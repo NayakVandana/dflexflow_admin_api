@@ -1,14 +1,14 @@
 <?php
 
-function formatReputeID($repute_id, $type)
+function formatFlowID($flow_id, $type)
 {
-    return ($type == "individual" ? "RI-" : "RC-") . substr($repute_id, 0, 4) . "-" . substr($repute_id, 4, 4) . "-" . substr($repute_id, 8, 2);
+    return ($type == "individual" ? "FI-" : "FC-") . substr($flow_id, 0, 4) . "-" . substr($flow_id, 4, 4) . "-" . substr($flow_id, 8, 2);
 }
 
-function cleanReputeID($repute_id)
+function cleanFlowID($flow_id)
 {
-    if ($repute_id) {
-        return  preg_replace('/[^0-9]/', '', $repute_id);
+    if ($flow_id) {
+        return  preg_replace('/[^0-9]/', '', $flow_id);
     }
     return false;
 }
