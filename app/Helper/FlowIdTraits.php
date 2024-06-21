@@ -3,7 +3,7 @@ namespace App\Helper;
 
 use App\Models\User;
 
-trait ReputeIdTraits
+trait FlowIdTraits
 {
 
     public function assignIndividualFlowId()
@@ -35,7 +35,7 @@ trait ReputeIdTraits
         try {
             $is_exist = false;
             if ($flow_id) {
-                //It will check if any individuals having this repute id
+                //It will check if any individuals having this flow id
                 $individual_count = User::where("flow_id", $flow_id)->count();
                 if ($individual_count > 0) {
                     $is_exist = true;

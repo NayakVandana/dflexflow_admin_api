@@ -47,7 +47,7 @@ function execute_curl_admin($sub_url, $fields = [])
 function execute_curl_production($sub_url, $fields = [])
 {
 
-    $url = config('app.production_reputienfo_api_url') . "/" . $sub_url;
+    $url = config('app.production_flexflow_api_url') . "/" . $sub_url;
 
     $client = new \GuzzleHttp\Client();
 

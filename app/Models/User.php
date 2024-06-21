@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Helper\ReputeIdTraits;
+use App\Helper\FlowIdTraits;
 use App\Helper\UserTokenTraits;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,7 +18,7 @@ use Str;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, UserTokenTraits, ReputeIdTraits, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, UserTokenTraits, FlowIdTraits, SoftDeletes;
 
     protected $fillable = [
         'id',
